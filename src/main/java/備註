@@ -1,0 +1,5 @@
+將資料庫administrator表中資料level刪除
+修改Tech_Class_ID為Teach_Class_ID
+資料表欄位名稱統一大寫之間用_隔開
+修改classmodule表雙建改成單建(C_Module_ID)
+刪除sgdc表Subject_ID跟Academic_Year欄位
