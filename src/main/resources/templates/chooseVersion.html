@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-TW" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta versionName="viewport" version-content="width=device-width, initial-scale=1.0">
+    <title>畢業審查系統</title>
+    <link rel="stylesheet"  th:href="@{/css/chooseVersion.css}" href="chooseVersion.css">
+</head>
+    <body>
+        <div class="container">
+            <h1>畢業審查系統</h1>
+            <h2><span th:text="${studentId} + ' ' + ${studentName} "></span></h2>
+            <div class="versions">
+                <div class="version-container" th:each="version : ${versions}">
+                    <div class="version">
+                        <h3><span th:text="${version.versionName}"></span></h3>
+                    </div>
+                    <div class="version-content">
+                        <p>主修:<span th:text="${version.majorDepartment?.courseStructureName}"></span></p>
+                        <p>輔系:<span th:text="${version.auxiliaryDepartment?.courseStructureName}"></span></p>
+                        <p>雙主修:<span th:text="${version.doubleMajorDepartment?.courseStructureName}"></p>
+                        <p>教程:<span th:if="${version.teachClass == null}">無</span>
+                                <span th:if="${version.teachClass != null}">有</span></p>
+                    </div>
+                    <a th:href="@{versions/choose/{versionId}(versionId = ${version.versionId})}"><button class="confirm-button">
+                        <span th:if="${version.versionId != 0}">確認</span>
+                        <span th:if="${version.versionId == 0}">New</span>
+                    </button></a>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

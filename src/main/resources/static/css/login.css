@@ -1,0 +1,80 @@
+body{
+    background-color: rgb(255, 241, 204);
+    }
+h1{
+    text-align:center;
+}
+h2{
+    text-align:center;
+}
+
+label{
+    padding:10px 10px 10px 0;
+    display:inline-block;
+}
+
+.row input{
+    margin:10px;
+}
+
+.header{
+    margin:5px;
+}
+
+.header_2{
+    margin:5px;
+}
+
+.form_place{
+    width:350px;
+    position: absolute;
+    left: 50%;
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+
+.botton_place{
+    margin-top:10px;
+    text-align:center;
+}
+
+.botton_place *{
+    width:45%
+    
+}
+
+.row{
+    width:100%;
+}
+
+.label_place{
+    float:left;
+    text-align:right;
+    width:25%;
+}
+
+.input_place{
+    float:left;
+    width:75%;
+}
+
+/*移除浮動*/
+.row:after{
+    content: "";
+    display: table;
+    clear: both;
+}
+@media screen and (max-width: 600px){
+    .label_place, .input_place{
+        width:100%;
+        text-align:left;
+        margin-top:0px;
+    }
+    .botton_place *{
+        width:50%;
+        margin-top:0px;
+    }
+    .row input{
+        width:100%;
+    }
+}

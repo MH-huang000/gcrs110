@@ -1,0 +1,46 @@
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+.section-header h2 {
+    margin: 0;
+}
+.right-panel .section-header h2{
+    padding: 10px;
+}
+
+.right-panel {
+    width: 40%;
+    background-color: #d6e8f0;
+    padding: 10px;
+    border-radius: 10px;
+    margin-left: 5px;
+    overflow-y: auto;
+}
+.right-panel tbody tr:hover {
+    background-color: #a0b8d0;
+}
+.right-panel tbody tr[draggable="true"] {
+    cursor: grab;
+}
+
+tr[draggable="true"]:active {
+    cursor: grabbing;
+    opacity: 0.5;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+}
+th,td {
+    border: 1px solid #000;
+    padding: 5px;
+    text-align: center;
+}
+th {
+    background-color: #f8cbad;
+}

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-TW" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="Classport" content="width=device-width, initial-scale=1.0">
+    <title>畢業審查SumAll</title>
+    <link rel="stylesheet"  href ="C:\Users\USER\OneDrive\桌面\gcrs\專題\test\src\main\resources\static\css\left-panel.css">
+    <script src="https://kit.fontawesome.com/92dea05507.js" crossorigin="anonymous"></script>
+
+
+</head>
+
+<body>
+    <div id="left-panel"  th:fragment= "left-panel">
+        <div class="courseStructure"  id = "courseStructure" th:data-id = "${courseStructure.courseStructureId}">
+            <div>
+                <div class="section-header">
+                    <h2><span th:text="${courseStructure.department.departmentName}"></span></h2>
+                    <div>學分數:
+                        <span class="NowModuleCredit" th:text="${courseStructure.obtainedCredit}"></span> /
+                        <span class=" ModuleCredit" th:text="${courseStructure.totalCredit}"></span>
+                    </div>
+                </div>
+                
+                <div class = "classModuleId" th:each="classModule : ${courseStructure.classModules}" th:data-id = " ${classModule.classModuleId}">
+
+                    <div class=" module-container"  th:each= "CourseModule : ${classModule.courseModules}"  th:data-package-id = " ${CourseModule.id.coursePackageId}" th:data-module-id = " ${CourseModule.id.courseModuleId}">
+                        <div class="module-header">
+                        <div class="info module-name" th:text="${CourseModule.moduleName}"></div>
+                        <div class="info credit">
+                            <table class="credit-table">
+                                <tr class="info-must">
+                                    <th>必修:</th>
+                                    <td class="required">
+                                        <span class="NowRequiredCredit" th:text="${CourseModule.requiredCredits}"></span>
+                                        <span class="RequiredCredit" th:text="'/' + ${CourseModule.nonTechRequiredCredits}"></span>
+                                    </td>
+                                    <th>選修:</th>
+                                    <td class="elective">
+                                        <span class="NowElectiveCredit" th:text="${CourseModule.ElectiveCredits}"></span>
+                                        <span class="ElectiveCredit" th:text="'/'+${CourseModule.nonTechElectiveCredits}"></span>
+                                    </td>
+                                </tr>
+                                <tr class="info-extra">
+                                    <th>含正在修:</th>
+                                    <td class="required">
+                                        <span class="ExtraRequiredCredit" >0/</span>
+                                        <span class="RequiredCredit" th:text="${CourseModule.nonTechRequiredCredits}">5</span>
+                                    </td>
+                                    <th>含正在修:</th>
+                                    <td class="elective">
+                                        <span class="ExtraElectiveCredit">0/</span>
+                                        <span class="ElectiveCredit" th:text="${CourseModule.nonTechElectiveCredits}"></span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        </div>
+
+                        <div class="module-table">
+                            <table>
+                            <thead>
+                                <tr>
+                                    <th>學期</th>
+                                    <th>科目代碼</th>
+                                    <th>科目名稱</th>
+                                    <th>選別</th>
+                                    <th>學分數</th>
+                                    <th>分數</th>
+                                    <th class="trash">
+                                        <i class="fa-regular fa-trash-can" style="color: #0c0b0b;"></i>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each= "courseData : ${CourseModule.courseDatas}"  th:data-id = "${courseData.courseDataId}">
+                                    <td><span th:text="${courseData.semester}"></span></td>
+                                    <td><span th:text="${courseData.subject.subjectCode}"></span></td>
+                                    <td><span th:text="${courseData.subject.cname}"></span></td>
+                                    <td><span th:text="${courseData.subject.sel == 1}?'必':'選'">必/選</span></td>
+                                    <td><span th:text="${courseData.subject.credit}"></span></td>
+                                    <td><span th:text="${courseData.grade}"></span></td>
+                                    <td style="display:none"><span th:text="${courseData.courseDataId}" ></span></td>
+                                    <td class="trash">
+                                        <i class="fa-regular fa-trash-can trash-can" style="color: #e54848;"></i>
+                                    </td>
+                                </tr>
+                                             
+                            </tbody>
+                            <tbody>
+                                <tr th:each= "subject : ${CourseModule.subjects}" class="defult">
+                                    <td></td>
+                                    <td><span th:text="${subject.subjectCode}"></span></td>
+                                    <td><span th:text="${subject.cname}"></span></td>
+                                    <td><span th:text="${subject.sel == 1}?'必':'選'">必/選</span></td>
+                                    <td><span th:text="${subject.credit}"></span></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="buttons">
+                <button id = "reset">重設</button>
+                <button id = "autofill">自動填入</button>
+                <button id = "save">儲存</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

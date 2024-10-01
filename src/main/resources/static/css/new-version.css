@@ -1,0 +1,115 @@
+/* 保持页面的水平方向居中 */
+body {
+    text-align: center; /* 让所有文本内容水平居中 */
+    background-color: rgb(255, 241, 204); /* 背景颜色，可根据需要修改 */
+    font-family: Arial, sans-serif; /* 设置字体 */
+    margin: 0; /* 移除默认外边距 */
+    padding: 0; /* 移除默认内边距 */
+}
+
+/* 隐藏默认的 radio 和 checkbox */
+input[type="radio"], input[type="checkbox"] {
+    display: none;
+}
+
+/* 创建自定义圆点按钮 */
+.custom-radio, .custom-checkbox {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    position: relative;
+    cursor: pointer;
+}
+
+/* 选中状态的样式 */
+input[type="radio"]:checked + .custom-radio,
+input[type="checkbox"]:checked + .custom-checkbox {
+    background-color: #4CAF50; /* 选中后的背景颜色 */
+    border-color: #4CAF50; /* 选中后的边框颜色 */
+}
+
+/* 圆点内部的小圆点 */
+input[type="radio"]:checked + .custom-radio::after,
+input[type="checkbox"]:checked + .custom-checkbox::after {
+    content: '';
+    display: block;
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* 使表单区域水平居中 */
+.form_container {
+    display: inline-block; /* 使容器根据内容宽度自动缩放 */
+    padding: 20px; /* 内边距 */
+    border: 2px solid #ccc; /* 边框 */
+    border-radius: 10px; /* 圆角 */
+    background-color: rgb(255, 241, 204); /* 白色背景 */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 添加阴影 */
+    text-align: left; /* 内部内容左对齐 */
+}
+
+/* 标题和副标题居中 */
+.header, .header_2 {
+    margin-bottom: 20px; /* 底部留出一定间距 */
+}
+
+/* 框框 */
+.form_container {
+    border: 2px solid rgb(191, 144, 0); /* 設置2px寬的灰色邊框 */
+    padding: 20px;          /* 設置內邊距，使內容與邊框保持距離 */
+    border-radius: 10px;    /* 圓角邊框 */
+    max-width: 500px;       /* 設置最大寬度，使其在大屏幕上不會太寬 */
+    margin: 20px auto;      /* 自動水平居中，並設置外邊距 */
+    background-color: #f9f9f9; /* 設置背景色，使內容區域更突出 */
+}
+
+/* h2水平置中 */
+h2 {
+    text-align: center; /* 水平居中 */
+}
+
+/* 使每个选项水平排列，并在每三个选项后换行 */
+label {
+    display: inline-block;
+    width: 30%; /* 每个label占据30%的宽度 */
+    margin-bottom: 10px; /* 选项之间的垂直间距 */
+    white-space: nowrap; /* 阻止换行 */
+}
+
+/* 清除浮动，在每三个label后面换行 */
+label:nth-child(3n+1) {
+    clear: left;
+}
+
+input[type="submit"] {
+    background-color: rgb(143, 170, 220);
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+/* 提交按钮在 hover 状态下的样式 */
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+/* 使按钮在表单区域内水平居中 */
+.row {
+    text-align: center;
+}
+span {
+    display: inline-block; /* 改为行内块元素 */
+    margin-right: 10px; /* 增加右侧的外边距 */
+}
