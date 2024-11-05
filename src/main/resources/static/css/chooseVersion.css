@@ -1,0 +1,52 @@
+/* 通用样式 */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fdf3d0;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+/* 卡片容器 */
+.versions{
+    display: flex;
+    justify-content: space-evenly;
+    padding: 0 40px;
+}
+
+/* 卡片样式 */
+.version-container {
+    background-color: white;
+    border: 2px solid #87ceeb;
+    border-radius: 10px;
+    padding: 20px 30px;
+    width: 200px;
+    cursor: pointer;
+}
+.version-container:hover{
+    border: 5px solid #87eb89;
+}
+.version-container.active{
+    border: 5px solid #87eb89;
+}
+.version-container.hide{
+    display: none;
+}
+
+.version-content{
+    text-align: left;
+}
+
+/* 确认按钮 */
+.confirm-button {
+    background-color: #9bb7cd;
+    border: 1px solid #333;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 40px;
+}
+
+.confirm-button:hover {
+    background-color: #7798c7;
+}

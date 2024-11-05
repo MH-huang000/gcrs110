@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-TW" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="Classport" content="width=device-width, initial-scale=1.0">
+    <title>畢業審查</title>
+    <link rel="stylesheet"  href ="C:\Users\USER\OneDrive\桌面\gcrs\專題\test\src\main\resources\static\css\left-panel.css">
+
+
+</head>
+
+<body>
+    <div th:fragment= "student-list">
+        <div>
+            <label th:each = "student : ${students}">
+                <input type="radio" name="student" th:value="studentId" checked>
+                <span class = studentId th:text="${student.studentId} + ' ' + ${student.studentName}">ACS110666</span>
+            </label>
+        </div>
+    </div>
+</body>
+
+</html>

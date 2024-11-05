@@ -11,9 +11,11 @@ import lombok.Data;
 @Data
 public class Administrator {
     @Id
-    @Column(name = "Staff_ID")
-    private int staff_ID;
-    @Column(name = "Staff_Name")
-    private String staff_Name;
+    @Column(name = "staff_id")
+    private int staffId;
+    @Column(name = "staff_name")
+    private String staffName;
+    @Column(name = "unit_id")
+    private String unitId;
 
 }

@@ -1,37 +1,45 @@
 package com.example.test.security;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.example.test.entity.Member;
+import com.example.test.entity.Account;
 
 public class MyUserDetails implements UserDetails {
-    private Member member;
+    private Account user;
 
-    public MyUserDetails(Member member) {
-        this.member = member;
+    public MyUserDetails(Account user) {
+        this.user = user;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(member.getIdentity());
-        return Arrays.asList(authority);
+        List<SimpleGrantedAuthority> authoritys = new ArrayList<>();
+        authoritys.add(new SimpleGrantedAuthority(user.getIdentity()));
+        // SimpleGrantedAuthority authority = new
+        // SimpleGrantedAuthority(user.getIdentity());
+        if (user.getAdministrator() != null) {
+            System.out.println(user.getAdministrator().getStaffName());
+            authoritys.add(new SimpleGrantedAuthority(user.getAdministrator().getUnitId()));
+        }
+        return authoritys;
 
     }
 
     @Override
     public String getPassword() {
-        return member.getPwd();
+        return user.getPwd();
 
     }
 
     @Override
     public String getUsername() {
-        return member.getUser_ID();
+        return user.getAccount();
     }
 
     @Override

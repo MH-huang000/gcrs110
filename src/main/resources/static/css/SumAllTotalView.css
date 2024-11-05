@@ -1,0 +1,43 @@
+/* 表格樣式 */
+.totalView table {
+    width: 95%;
+    margin: 1% auto;
+    border-collapse: collapse;
+    background-color: #f5e3c8; /* 淺米色背景 */
+}
+
+.totalView th, .totalView td {
+    border: 1.5px solid #a68d74; /* 深米色邊框 */
+    padding: auto;
+    text-align: center;
+}
+
+.totalView th {
+    background-color: #e8d3b0; /* 加深表頭背景色 */
+    color: #5a4632; /* 深棕色字體，避免黑色太生硬 */
+}
+
+.totalView td {
+    background-color: #f7e5c6; /* 單元格背景米色稍深一點 */
+    color: #5a4632; /* 深棕色字體，與背景對比更好 */
+}
+
+.totalView .header-top {
+    background-color: #dfc7ae; /* 更深的米色背景 */
+    color: #5a4632; /* 深棕色字體 */
+}
+
+.totalView .header-side {
+    background-color: #f3eadb; /* header-side 顏色稍深，保持米色系 */
+    color: #5a4632; /* 深棕色字體 */
+}
+
+/* 表格的邊框處理，顯得更加清晰 */
+.totalView th, .totalView td {
+    border: 1.5px solid #a68d74; /* 邊框使用深米色 */
+}
+
+.totalView {
+    background-color: #f0e4d7; /* 父層 div 米色背景保持不變 */
+}
+

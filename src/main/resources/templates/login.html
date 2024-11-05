@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"></html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" th:href="@{/css/login.css}">
+    <title>index.php</title>
+</head>
+<body>
+  
+
+    <div class="header">
+    <h1 id = h1>畢業審查系統</h1> 
+    </div>
+
+    <div class="header_2">
+    <h2 id="subtitle">登入</h2>
+    </div>
+
+    <div class="form_place">
+        <form th:action = @{/login} method = "post">
+
+            <div class="row"> 
+                <div class="label_place">
+                <label for= "account" id = "labe1">帳號:</label>
+                </div>
+
+                <div class="input_place">
+                <input type= "text" id = "account" name = "username" ><br><!--id:給css用,name給php用--> 
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="label_place">
+                <label for= "password" id = "labe2">密碼:</label>
+                </div>
+
+                <div class="input_place">
+                <input type= "password" id = "password" name = "password"><br>
+                </div>
+            </div>
+
+            <div class="botton_place">
+            <input type="submit" id ="submit" value = "登入"> <!--登入按鈕-->
+            <input type="button" value = "English"> <!--註冊按鈕-->
+            </div>
+
+        </form>
+    </div>
+  </div>
+</body>
+</html>

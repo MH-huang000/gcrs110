@@ -2,35 +2,43 @@ package com.example.test.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinColumns;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name = "Course_data")
+@Table(name = "course_data")
 @Data
-public class CourseData {
+public class CourseData implements Cloneable {
     @Id
-    @Column(name = "Course_Data_ID")
-    private int course_Data_ID;
-    @Column(name = "Student_ID")
-    private String student_ID;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "course_data_id")
+    private int courseDataId;
+
+    @Column(name = "student_id")
+    private String studentId;
 
     @OneToOne
-    @JoinColumns({
-            @JoinColumn(name = "Subject_ID", referencedColumnName = "Subject_ID"),
-            @JoinColumn(name = "Academic_Year", referencedColumnName = "Academic_Year")
-    })
+    @JoinColumn(name = "subject_id", referencedColumnName = "subject_id")
     private Subject subject;
 
-    @Column(name = "Grade")
-    private int grade;
-    @Column(name = "Status")
+    @Column(name = "grade", nullable = true)
+    private Integer grade;
+
+    // 1通過 2未通過 3正在修
+    @Column(name = "status")
     private int status;
-    @Column(name = "Semester")
+
+    @Column(name = "semester")
     private int semester;
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
 
 }

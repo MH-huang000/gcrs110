@@ -9,8 +9,8 @@ import lombok.Data;
 @Data
 @Embeddable
 public class SubjectID implements Serializable {
-    @Column(name = "Subject_ID")
-    private String subject_ID;
-    @Column(name = "Academic_Year")
-    private int academic_Year;
+    @Column(name = "subject_id ")
+    private String subjectId;
+    @Column(name = "academic_year")
+    private int academicYear;
 }

@@ -1,12 +1,12 @@
 package com.example.test.security;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -16,17 +16,29 @@ import lombok.RequiredArgsConstructor;
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class SecurityConfig {
-    private UserDetailsService userDetailsService;
+
+    @Autowired
+    private SecurityAuthSuccessHandler securityAuthSuccessHandler;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/test/hi").permitAll()
-                        .requestMatchers("/test/*").hasAuthority("admin")
+                        .requestMatchers("css/*").permitAll()
+                        .requestMatchers("/test/**").permitAll()
+                        .requestMatchers("/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs/**", "/api-docs/**")
+                        .permitAll()
+                        .requestMatchers("/admins/**").hasAuthority("staff")
                         .anyRequest().authenticated())
                 .formLogin(formLogin -> formLogin
-                        .permitAll());
+                        .loginPage("/login")
+                        .successHandler(securityAuthSuccessHandler)
+                        // .defaultSuccessUrl("/versions", true)
+                        .permitAll())
+                // csrf用來防範跨網站攻擊
+                .csrf(csrf -> csrf
+                        .disable());
+
         return http.build();
     }
 

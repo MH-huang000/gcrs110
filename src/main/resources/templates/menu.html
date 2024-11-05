@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-TW" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>畢業審查系統</title>
+    <link rel="stylesheet"  href ="C:\Users\USER\OneDrive\桌面\gcrs\專題\test\src\main\resources\static\css\header.css">
+</head>
+
+<body>
+    <nav id= "courseClass" th:fragment= "menu">
+        <div class="form-switch">
+            <input type="checkbox" value="" id="is-learning">
+            <label for="is-learning">正在修</label>
+        </div>
+
+        <div class="active" id="totalView">
+            <a th:href="@{/versions/totalView}">總覽</a>
+        </div>
+
+        <div class="active" id="general">
+            <a th:href="@{/versions/general}">通識</a>
+        </div>
+
+        <div class="active" id="major">
+            <a th:href="@{/versions/majorDepartment}">系專門</a>
+        </div>
+
+        <div class="active" id="program">
+            <a>學分學程</a>
+        </div>
+
+        <div class="active" id="education">
+            <a th:if="${aisle[2]}" th:href="@{/versions/teachClass}">教育學程</a>
+            <span th:unless = "${aisle[2]}">教育學程</span>
+        </div>
+    
+        <div class="active" id="minor">
+            <a th:if="${aisle[0]}" th:href="@{/versions/auxiliaryDepartment}">輔系</a>
+            <span th:unless = "${aisle[0]}">輔系</span>
+        </div>
+
+        <div class="active" id="double-major">
+            <a th:if="${aisle[1]}" th:href="@{/versions/doubleMajorDepartment}">雙主修</a>
+            <span th:unless = "${aisle[1]}">雙主修</span>
+        </div>
+        <i class="fa-solid fa-list"></i>
+    </nav>
+</body>
+
+</html>

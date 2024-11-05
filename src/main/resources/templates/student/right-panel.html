@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-TW" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="Classport" content="width=device-width, initial-scale=1.0">
+    <title>畢業審查</title>
+    <link rel="stylesheet"  href ="C:\Users\USER\OneDrive\桌面\gcrs\專題\test\src\main\resources\static\css\right-panel.css">
+    <script src="https://kit.fontawesome.com/92dea05507.js" crossorigin="anonymous"></script>
+
+
+</head>
+
+<body>
+    <div class="right-panel" id = "right-panel" th:fragment= "right-panel">
+        <div class="section-header">
+            <h2>已修科目</h2>
+        </div>
+        <div id = "search-result">
+            
+        </div>
+        <div>
+            <h3>已通過</h3>
+            <table id="pass">
+                <thead>
+                    <tr>
+                        <th>學期</th>
+                        <th>科目代碼</th>
+                        <th>科目名稱</th>
+                        <th>選別</th>
+                        <th>學分數</th>
+                        <th>分數</th>
+                        <th>可放入模組</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each= "courseData : ${student.courseDatas}" draggable="true" th:data-id = "${courseData.courseDataId}">
+                        <td><span th:text="${courseData.semester}"></span></td>
+                        <td><span th:text="${courseData.subject.subjectCode}"></span></td>
+                        <td><span th:text="${courseData.subject.cname}"></span></td>
+                        <td><span th:text="${courseData.subject.sel == 1}?'必':'選'">必/選</span></td>
+                        <td><span th:text="${courseData.subject.credit}"></span></td>
+                        <td><span th:text="${courseData.grade}"></span></td>
+                        <td><p th:each = "cm :${courseData.subject.courseModules}" th:text="${cm.moduleName}"></p></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="info-extra">
+            <h3>正在修</h3>
+            <table id="learing">
+                <thead>
+                    <tr>
+                        <th>學期</th>
+                        <th>科目代碼</th>
+                        <th>科目名稱</th>
+                        <th>選別</th>
+                        <th>學分數</th>
+                        <th>分數</th>
+                        <th>可放入模組</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each= "courseData : ${student.onGoings}" draggable="true" th:data-id = "${courseData.courseDataId}">
+                        <td><span th:text="${courseData.semester}"></span></td>
+                        <td><span th:text="${courseData.subject.subjectCode}"></span></td>
+                        <td><span th:text="${courseData.subject.cname}"></span></td>
+                        <td><span th:text="${courseData.subject.sel == 1}?'必':'選'">必/選</span></td>
+                        <td><span th:text="${courseData.subject.credit}"></span></td>
+                        <td><span th:text="${courseData.grade}"></span></td>
+                        <td><span th:each = "cm :${courseData.subject.courseModules}" th:text="${cm.moduleName}"></span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="unpass">
+            <h3>未通過</h3>
+            <table id="unpass">
+                <thead>
+                    <tr>
+                        <th>學期</th>
+                        <th>科目代碼</th>
+                        <th>科目名稱</th>
+                        <th>選別</th>
+                        <th>學分數</th>
+                        <th>分數</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each= "courseData : ${student.fails}" th:data-id = "${courseData.courseDataId}">
+                        <td><span th:text="${courseData.semester}"></span></td>
+                        <td><span th:text="${courseData.subject.subjectCode}"></span></td>
+                        <td><span th:text="${courseData.subject.cname}"></span></td>
+                        <td><span th:text="${courseData.subject.sel == 1}?'必':'選'">必/選</span></td>
+                        <td><span th:text="${courseData.subject.credit}"></span></td>
+                        <td><span th:text="${courseData.grade}"></span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>

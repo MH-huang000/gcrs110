@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-TW" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>畢業審查系統</title>
+    <link rel="stylesheet" href ="C:\Users\USER\OneDrive\桌面\gcrs\專題\test\src\main\resources\static\css\header.css">
+</head>
+
+
+<body>
+    <header th:fragment="title">
+        <div class="system"><b>畢業審查系統</b></div>
+        <div class="user-info">
+            <span th:text="${student.studentId}"></span>
+            <span th:text="${student.studentName}"></span>
+        </div>
+        <div class="search">
+            <input type="text" name="search" placeholder="已修科目查詢" id="search">
+            <button id = "search-button">🔍</button>
+        </div>
+        <button onclick="logout();">登出</button>
+    </header>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+body {
+    font-family: 'Microsoft YaHei', Arial, sans-serif;
+    background-color: #f0e4d7;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+/* 正在修隱藏 */
+.info-extra {
+    max-height: 0;
+    /* 初始状态下高度为0 */
+    opacity: 0;
+    /* 初始状态透明 */
+    display: none;
+}
+/* 正在修顯示 */
+.info-extra.expanded {
+    display: contents;
+    opacity: 1;
+    /* 完全显示 */
+}
+
+.content {
+    display: flex;
+    padding: 5px;
+    overflow-y: hidden;
+}
+
+
+.divider {
+    width: 5px;
+    background-color: #888;
+    cursor: col-resize;
+    position: relative;
+}
+.divider:hover {
+    width: 10px;
+    background-color: #555;
+}
+
+.highlight {
+    background-color: #f3db51; /* 浅蓝色背景 */
+    border: 2px solid#968d7d;
+    transition: background-color 1s ease, border 1s ease; /* 平滑过渡 */
+}

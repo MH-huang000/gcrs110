@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-TW" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>畢業審查系統</title>
+</head>
+
+<body>
+    <nav class="setVersion" th:fragment="version-info">
+        <h4>目前版本</h4>
+        <ul th:each = "name : ${courseStructureNames}">
+            <li th:text="${name}">課架名稱:</li>
+        </ul>
+        <h4>已有版本</h4>
+        <ul th:each = "name : ${versionNames}">
+            <li th:text="'版本名稱: ' + ${name}">版本1</li>
+        </ul>
+        <button id = "switch-version">切換版本</button>
+        <button id = "update-version">修改版本</button>
+        <button id = "delete-version">刪除版本</button>
+        <button id = "submit-version">提交版本</button>
+    </nav>
+</body>
+
+</html>

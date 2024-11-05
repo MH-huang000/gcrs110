@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-TW" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>選系</title>
+    <link rel="stylesheet" th:href="@{/css/new-version.css}"> <!-- 链接到外部CSS文件 -->
+    <script src="version-check" th:src="@{/js/version-check.js}"></script>
+</head>
+<body>
+    <h1>畢業審查系統</h1>
+  <div class="form_container">
+    <h2>設定科系</h2>
+
+    <form th:action = "@{/versions/create}" method = "post" onsubmit = "return versionCheck()">
+        <h3>版本名稱: <input type ="text" id = "name" name= "name" value="新版本" required="required" maxlength="10"></h3>
+        <h3>主修：</h3>
+        <label th:each="temp : ${majorDepartments}">
+            <input type="radio" name="majorDepartmentId" th:value= "${temp.courseStructureId}" checked>
+            <span class="custom-radio"></span>
+            <span th:id =  "${temp.courseStructureId}" th:text = "${temp.courseStructureName}"></span>
+        </label>
+
+        <h3>輔系：</h3>
+        <label>
+            <input type="radio" name="auxiliaryDepartmentId" value= 0 checked>
+            <span class="custom-radio"></span>
+            無
+        </label>
+        <label th:each="temp : ${auxiliaryDepartments}">
+            <input type="radio" name="auxiliaryDepartmentId" th:value= "${temp.courseStructureId}">
+            <span class="custom-radio"></span>
+            <span th:id =  "${temp.courseStructureId}" th:text = "${temp.courseStructureName}"></span>
+        </label>
+
+        <h3>雙主修：</h3>
+        <label>
+            <input type="radio" name="doubleMajorDepartmentId" value= 0 checked>
+            <span class="custom-radio"></span>
+            <span>無</span>
+        </label>
+        <label th:each="temp : ${doubleMajorDepartments}">
+            <input type="radio" name="doubleMajorDepartmentId" th:value= "${temp.courseStructureId}">
+            <span class="custom-radio"></span>
+            <span th:id =  "${temp.courseStructureId}" th:text = "${temp.courseStructureName}"></span>
+        </label>
+
+        <h3>教程：</h3>
+        <label>
+            <input type="radio" name="teachClassId" value= 1>
+            <span class="custom-radio"></span>
+            <span>有</span>
+        </label>
+        <label>
+            <input type="radio" name="teachClassId" value= 0 checked>
+            <span class="custom-radio"></span>
+            <span>無</span>
+        </label>
+        <div class="row">
+            <input type="submit" id="submit" value="確認">
+        </div>
+    </form>
+  </div>
+</body>
+</html>

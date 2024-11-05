@@ -5,37 +5,38 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import com.example.test.dao.MemberDao;
-import com.example.test.entity.Member;
+import com.example.test.dao.AccountDao;
+import com.example.test.entity.Account;
 
 import jakarta.transaction.Transactional;
 
 @Service
 public class MyUserDetailsService implements UserDetailsService {
     @Autowired
-    private MemberDao memberDao;
+    private AccountDao accountDao;
 
     @Transactional
     @Override
     public UserDetails loadUserByUsername(String accout) throws UsernameNotFoundException {
-        Member member = memberDao.getReferenceById(accout);
-        System.out.println(member);
-        if (member == null) {
+        Account user = accountDao.findById(accout).orElse(null);
+        System.out.println(user.getAccount() + " 登入");
+
+        if (user == null) {
             throw new UsernameNotFoundException("User not found");
         }
-        return new MyUserDetails(member);
+        return new MyUserDetails(user);
     }
-    /*
-     * @Override
-     * public UserDetails loadUserByUsername(String username) throws
-     * UsernameNotFoundException {
-     * // TODO Auto-generated method stub
-     * throw new
-     * UnsupportedOperationException("Unimplemented method 'loadUserByUsername'");
-     * }
-     */
-    /*
-     * could not initialize proxy [com.example.test.security.Member#ACS110105] - no
-     * Session
-     */
 }
+/*
+ * @Override
+ * public UserDetails loadUserByUsername(String username) throws
+ * UsernameNotFoundException {
+ * // TODO Auto-generated method stub
+ * throw new
+ * UnsupportedOperationException("Unimplemented method 'loadUserByUsername'");
+ * }
+ */
+/*
+ * could not initialize proxy [com.example.test.security.Member#ACS110105] - no
+ * Session
+ */

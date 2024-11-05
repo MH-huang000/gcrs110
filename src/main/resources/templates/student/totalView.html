@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-TW" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Classport" content="width=device-width, initial-scale=1.0">
+    <title>畢業審查</title>
+    <link rel="stylesheet" href="header.css" th:href="@{/css/header.css}">
+    <link rel="stylesheet" href="totalView.css" th:href="@{/css/totalView.css}">
+    <script src="https://kit.fontawesome.com/92dea05507.js" crossorigin="anonymous"></script>
+    <script src="header.js" th:src="@{/js/header.js}"></script>
+    <script src="chooseclass.js" th:src="@{/js/chooseclass.js}"></script>
+
+</head>
+
+<body>
+    <div th:replace="~{header :: title}"></div>
+    <div th:replace="~{menu :: menu}"></div>
+    <div th:replace="~{version-info :: version-info}"></div>
+
+    <main>
+        <!-- <div class="totalView courseClass expanded">
+            <table>
+            <thead>
+                    <tr class="course_structure">
+                        <th>課架</th>
+                        <th colspan="12">資工主修110</th>
+                        <th colspan="3">教育學程</th>
+                        <th colspan="2">數位輔系</th>
+                        <th colspan="2">數位雙主修</th>
+                    </tr>
+                    <tr class="course_class">
+                        <th>課程類別</th>
+                        <th colspan="2" class="school">校共同</th>
+                        <th colspan="2" class="general">通識</th>
+                        <th colspan="5" class="major">專門</th>
+                        <th colspan="3" class="program">學分學程</th>
+                        <th colspan="3" class="Education">專門</th>
+                        <th colspan="2" class="minor">專門</th>
+                        <th colspan="2" class="double-major">專門</th>
+                    </tr>
+                    <tr class="classModule">
+                        <th class="classModule-0">類別模組</th>
+                        <th class="classModule-1">校必</th>
+                        <th class="classModule-2">校選</th>
+                        <th class="classModule-3">語文<br />通識</th>
+                        <th class="classModule-4">通識<br />選修</th>
+                        <th class="classModule-5">院共同</th>
+                        <th class="classModule-6">系基礎</th>
+                        <th class="classModule-7">系核心</th>
+                        <th class="classModule-8">專業</th>
+                        <th class="classModule-9">自由</th>
+                        <th class="classModule-10">微型</th>
+                        <th class="classModule-11">增能</th>
+                        <th class="classModule-12">跨領域</th>
+                        <th class="classModule-13">教育<br />專業</th>
+                        <th class="classModule-14">專門</th>
+                        <th class="classModule-15">普通</th>
+                        <th class="classModule-16">系基礎</th>
+                        <th class="classModule-17">系核心</th>
+                        <th class="classModule-18">系基礎</th>
+                        <th class="classModule-19">系核心</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="ModuleCredit">
+                        <th>應修</th>
+                        <td class="" >--</td>
+                        <td >--</td>
+                        <td >--</td>
+                        <td >--</td>
+                        <td >--</td>
+                        <td >--</td>
+                        <td >--</td>
+                        <td >--</td>
+                        <td >--</td>
+                        <td >--</td>
+                        <td >--</td>
+                        <td >--</td>
+                        <td >--</td>
+                        <td >--</td>
+                        <td >--</td>
+                        <td >--</td>
+                        <td >--</td>
+                    </tr>
+                    <tr class="NowModuleCredit">
+                        <th>已修</th>
+                        <td>--</td>
+                        <td>--</td>
+                        <td >--</td>
+                        <td >--</td>
+                        <td >--</td>
+                        <td >--</td>
+                        <td >--</td>
+                        <td >--</td>
+                        <td >--</td>
+                        <td >--</td>
+                        <td >--</td>
+                        <td >--</td>
+                        <td >--</td>
+                        <td >--</td>
+                        <td >--</td>
+                        <td >--</td>
+                        <td >--</td>
+                    </tr>
+                    <tr class="NowLearningModuleCredit">
+                        <th>正在修</th>
+                        <td >--</td>
+                        <td >--</td>
+                        <td >--</td>
+                        <td >--</td>
+                        <td >--</td>
+                        <td >--</td>
+                        <td >--</td>
+                        <td >--</td>
+                        <td >--</td>
+                        <td >--</td>
+                        <td >--</td>
+                        <td >--</td>
+                        <td >--</td>
+                        <td >--</td>
+                        <td >--</td>
+                        <td >--</td>
+                        <td >--</td>
+                    </tr>
+                    <tr class="Ispass">
+                        <th>通過</th>
+                        <td >--</td>
+                        <td >--</td>
+                        <td >--</td>
+                        <td >--</td>
+                        <td >--</td>
+                        <td >--</td>
+                        <td >--</td>
+                        <td >--</td>
+                        <td >--</td>
+                        <td colspan="3">--</td>
+                        <td >--</td>
+                        <td >--</td>
+                        <td >--</td>
+                        <td >--</td>
+                        <td >--</td>
+                    </tr>
+                    <tr class="Islearningpass">
+                        <th>含正在修</th>
+                        <td >--</td>
+                        <td >--</td>
+                        <td >--</td>
+                        <td >--</td>
+                        <td >--</td>
+                        <td >--</td>
+                        <td >--</td>
+                        <td >--</td>
+                        <td >--</td>
+                        <td colspan="3">--</td>
+                        <td >--</td>
+                        <td >--</td>
+                        <td >--</td>
+                        <td >--</td>
+                        <td >--</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div> -->
+
+        <div  class="totalView courseClass expanded">
+            <table>
+                <thead>
+                     <tr class="course_structure">
+                        <th>課架</th>
+                        <th th:colspan = "${courseStructure.threshold}" th:each = "courseStructure : ${courseStructures}" th:text = "${courseStructure.courseStructureName}"></th>
+                     </tr>
+                     <tr class="course_class">
+                        <th>課程類別</th>
+                        <div th:each = "courseStructure : ${courseStructures}">
+                            <th th:each = "classModule : ${courseStructure.classModules}" th:text = "${classModule.classModuleName}"></th>
+                        </div>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="ModuleCredit">
+                        <th>應修</th>
+                        <div th:each = "courseStructure : ${courseStructures}">
+                            <td th:each = "classModule : ${courseStructure.classModules}" th:text = "${classModule.totalCredit}"></td>
+                        </div>
+                    </tr>
+                    <tr class="ModuleCredit">
+                        <th>已修</th>
+                        <div th:each = "courseStructure : ${courseStructures}">
+                            <td th:each = "classModule : ${courseStructure.classModules}" th:text = "${classModule.obtainedCredit}"></td>
+                        </div>
+                    </tr>
+                    <tr class="NowLearningModuleCredit">
+                        <th>正在修</th>
+                        <div th:each = "courseStructure : ${courseStructures}">
+                            <td th:each = "classModule : ${courseStructure.classModules}" th:text = "(${classModule.OnGoingCredit}-${classModule.obtainedCredit})"></td>
+                        </div>
+                    </tr>
+                    <tr class="Ispass">
+                        <th>通過</th>
+                        <div th:each = "courseStructure : ${courseStructures}">
+                            <td th:each = "classModule : ${courseStructure.classModules}" th:text = "${classModule.pass == true}?'P':'N'"></td>
+                        </div>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+    
+</body>
+
+</html>

@@ -10,8 +10,8 @@ import lombok.Data;
 @Embeddable
 // 要實作equals()跟hashcode()
 public class CourseModuleID implements Serializable {
-    @Column(name = "Course_Package_ID")
-    private int Course_package_ID;
-    @Column(name = "Course_Module_ID")
-    private String Course_module_ID;
+    @Column(name = "course_package_id")
+    private int coursePackageId;
+    @Column(name = "course_module_id")
+    private String courseModuleId;
 }

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-TW" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+    <div th:fragment="search" id = "search-result">
+        <h3>查詢結果</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>學期</th>
+                    <th>科目代碼</th>
+                    <th>科目名稱</th>
+                    <th>選別</th>
+                    <th>學分數</th>
+                    <th>分數</th>
+                    <th>可放入模組</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each= "courseData : ${courseDatas}" draggable="true" th:data-id = "${courseData.courseDataId}">
+                    <td><span th:text="${courseData.semester}"></span></td>
+                    <td><span th:text="${courseData.subject.subjectCode}"></span></td>
+                    <td><span th:text="${courseData.subject.cname}"></span></td>
+                    <td><span th:text="${courseData.subject.sel == 1}?'必':'選'">必/選</span></td>
+                    <td><span th:text="${courseData.subject.credit}"></span></td>
+                    <td><span th:text="${courseData.grade}"></span></td>
+                    <td><span th:each = "cm :${courseData.subject.courseModules}" th:text="${cm.moduleName}"></span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
